@@ -1,0 +1,14 @@
+{
+    "cmake.configureOnOpen": true,
+    "workbench.colorCustomizations": {
+        "titleBar.activeBackground": "#2CB12C",
+        "titleBar.activeForeground": "#F5FDF5",
+        "titleBar.inactiveBackground": "#0f1856",
+        "titleBar.inactiveForeground": "#969696",
+        "activityBar.background": "#228822"
+    },
+    "files.associations": {
+        "*.sdf": "xml",
+        "iosfwd": "cpp"
+    }
+}
