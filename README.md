@@ -55,4 +55,14 @@ print(h_sig)
 HSignature get_h_signature(Loop const &loop, Skeleton const & skeleton);
 ```
 
-## Citation
+## Reference
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.8374620.svg)](https://doi.org/10.5281/zenodo.8374620)
+
+If you use this package in your research, consider citing
+```
+@software{mitrano_hsignature_2023,
+author = {Peter Mitrano},
+title = {{h-signature library}},
+year = {2023}
+}
+```
