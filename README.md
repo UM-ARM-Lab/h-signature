@@ -23,6 +23,9 @@ For C++:
 git clone git@github.com:UM-ARM-Lab/h-signature.git
 cd h-signature
 mkdir build
+# The only dependency is Eigen3
+sudo apt install libeigen3-dev
+# Build and run tests
 cd build
 cmake ..
 make
