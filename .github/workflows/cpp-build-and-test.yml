@@ -1,0 +1,12 @@
+name: Build
+on:
+  push:
+jobs:
+  build-project:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Configure, build, and test the project
+          uses: threeal/cmake-action@v1.3.0
+          with:
+            run-build: true
+            run-test: true
