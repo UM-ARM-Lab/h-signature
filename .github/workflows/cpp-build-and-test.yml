@@ -5,8 +5,15 @@ jobs:
   build-project:
     runs-on: ubuntu-latest
     steps:
-        - name: Configure, build, and test the project
+        - name: Checkout the repository
+          uses: actions/checkout@v3.5.3
+        - name: ls
+          run: ls
+        - name: pwd
+          run: pwd
+        - name: Configure the project
           uses: threeal/cmake-action@v1.3.0
-          with:
-            run-build: true
-            run-test: true
+        - name: Build the project
+          run: cmake --build build
+        - name: Test the project
+          run: ctest --test-dir build
