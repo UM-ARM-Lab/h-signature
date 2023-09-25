@@ -5,7 +5,7 @@ A C++ or Python Library for computing the h-signature as defined by Bhattacharya
 What is the H-signature? In the simplest case, it tells you whether two closed 3D curves are linked, or unlinked. The figure below shows some examples.
 ![Four visual examples of the H-signature](docs/simple_h.png)
 
-In the general case, the H-signature is computed between one closed curve `$\tau$` and a skeleton of closed curves `$S=\{S_1,\dots,S_m\}$`. In code, each curve is a matrix of [3xN] (C++) or [Nx3] (Python) where N is the number of points in the curve. The H-signature is a vector (ordered list) of integers, where each element correspond to the h-signature of `$\tau$` with respect to one curve in `$S$`.
+In the general case, the H-signature is computed between one closed curve $\tau$ and a skeleton of closed curves $S=\{S_1,\dots,S_m\}$. In code, each curve is a matrix of [3xN] (C++) or [Nx3] (Python) where N is the number of points in the curve. The H-signature is a vector (ordered list) of integers, where each element correspond to the h-signature of $\tau$ with respect to one curve in $S$.
 
 ## Installation
 
