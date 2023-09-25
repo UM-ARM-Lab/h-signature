@@ -2,6 +2,7 @@ project(h_signature)
 cmake_minimum_required(VERSION 3.10)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS_DEBUG "-g -O0 -Wall -Wextra")
 set(Python_VIRTUALENV FIRST)
 
 find_package(Python COMPONENTS Interpreter Development)
