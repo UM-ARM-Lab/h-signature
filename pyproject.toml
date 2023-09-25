@@ -27,7 +27,6 @@ classifiers = [
 
 dependencies = [
     'numpy',
-    'multiset'
 ]
 
 [project.optional-dependencies]
