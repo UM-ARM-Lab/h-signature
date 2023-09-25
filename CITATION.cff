@@ -4,7 +4,7 @@ authors:
   - family-names: Mitrano
     given-names: Peter
     orcid: https://orcid.org/0000-0002-8701-9809
-title: PyTorch Kinematics
+title: H-Signature
 doi: 10.5281/zenodo.7700588
 version: v0.5.4
 date-released: 2023-03-06
