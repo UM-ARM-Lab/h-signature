@@ -1,35 +1,55 @@
-# h-signature
+# H-Signature
 
-A C++ Library w/ Python Bindings for computing the h-signature as defined in \[1\].
+A C++ or Python Library for computing the h-signature as defined in \[1\].
+
+What is the H-signature? In the simplest case, it tells you whether two closed 3D curves are linked, or unlinked. The figure below shows some examples.
+![Four visual examples of the H-signature](docs/simple_h.png)
+
+In the general case, the H-signature is computed between one closed curve `$\tau$` and a skeleton of closed curves `$S=\{S_1,\dots,S_m\}$`. In code, each curve is a matrix of [3xN] (C++) or [Nx3] (Python) where N is the number of points in the curve. The H-signature is a vector (ordered list) of integers, where each element correspond to the h-signature of `$\tau$` with respect to one curve in `$S$`.
 
 ## Installation
+
+For python:
 
 ```shell
 pip install h-signature
 
 ```
 
-## Quickstart
+For C++:
+
+```shell
+# The only option we offer is building from source with cmake 
+git clone git@github.com:UM-ARM-Lab/h-signature.git
+cd h-signature
+mkdir build
+cd build
+cmake ..
+make
+ctest
+```
+
+## API
+
+There is only one function!
 
 ```python
-
-import numpy as np
-import h_signature
-
-# Create two matrices [N, 3] which represents two closed loops in 3D
-N = 10
-angles = np.linspace(0, 2*np.pi, N, endpoint=False)
-tau_loop = np.stack([np.cos(angles), np.sin(angles), np.zeros(N)], axis=1)
-obs1_loop = np.stack([np.cos(angles), np.zeros(N), np.sin(angles)], axis=1)
-obs2_loop = np.stack([np.cos(angles), np.zeros(N), np.sin(angles)], axis=1) + 1
-skeleton = {
-    'obs1': obs1_loop,
-    'obs2': obs2_loop,
-}
-
-# Compute the h-signature of tau_loop with respect to the skeleton
-h_sig = h_signature.get_h_signature(tau_loop, skeleton)
+# Python with numpy
+from h_signature.h_signature_np import get_h_signature
+# Tau is an [Nx3] numpy array and skeleton is a dict of [3xN] numpy arrays
+h_sig = get_h_signature(tau, skeleton)
 print(h_sig)
+```
+
+```c++
+// C++ with Eigen
+#include <h_signature/h_signature.hpp>
+// The above header has these typedefs
+// typedef Eigen::Matrix3Xd Loop;
+// typedef std::map<std::string, Eigen::Matrix3Xd> Skeleton;
+
+// And this is the function, that's it! 
+HSignature get_h_signature(Loop const &loop, Skeleton const & skeleton);
 ```
 
 ## Citation

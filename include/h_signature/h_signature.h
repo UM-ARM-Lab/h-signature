@@ -30,7 +30,7 @@ Loop discretize_loop(Loop const & loop, int n_disc);
 // Args:
 //     skeleton: [3, 3] the points that define the skeleton
 //     r: [3, b] the points at which to compute the field.
-Eigen::Matrix3Xd skeleton_field_dirs(Eigen::Matrix3Xd const & obstacle_loop_i, Loop const & loop_disc);
+Eigen::Matrix3Xd skeleton_field_dirs(Loop const & obstacle_loop_i, Loop const & loop_disc);
 
 /// @brief Computes the cross product between each pair of vectors in a and b.
 /// @param a [3, n, m]
