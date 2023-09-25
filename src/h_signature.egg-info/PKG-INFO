@@ -1,0 +1,101 @@
+Metadata-Version: 2.1
+Name: h-signature
+Version: 0.0.3
+Summary: Topological H-signature
+Author-email: Peter Mitrano <pmitrano@umich.edu>
+Maintainer-email: Peter Mitrano <pmitrano@umich.edu>
+License: Copyright (c) 2023 University of Michigan ARM Lab
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy of
+        this software and associated documentation files (the "Software"), to deal in
+        the Software without restriction, including without limitation the rights to
+        use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+        of the Software, and to permit persons to whom the Software is furnished to do
+        so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+        
+Project-URL: Homepage, https://github.com/UM-ARM-Lab/h_signature
+Project-URL: Bug Reports, https://github.com/UM-ARM-Lab/h_signature/issues
+Project-URL: Source, https://github.com/UM-ARM-Lab/h_signature
+Keywords: topology,homology,robotics
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3 :: Only
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+Requires-Dist: numpy
+Provides-Extra: test
+Requires-Dist: pytest; extra == "test"
+
+# H-Signature
+
+A C++ or Python Library for computing the h-signature as defined in \[1\].
+
+What is the H-signature? In the simplest case, it tells you whether two closed 3D curves are linked, or unlinked. The figure below shows some examples.
+![Four visual examples of the H-signature](docs/simple_h.png)
+
+In the general case, the H-signature is computed between one closed curve `$\tau$` and a skeleton of closed curves `$S=\{S_1,\dots,S_m\}$`. In code, each curve is a matrix of [3xN] (C++) or [Nx3] (Python) where N is the number of points in the curve. The H-signature is a vector (ordered list) of integers, where each element correspond to the h-signature of `$\tau$` with respect to one curve in `$S$`.
+
+## Installation
+
+For python:
+
+```shell
+pip install h-signature
+
+```
+
+For C++:
+
+```shell
+# The only option we offer is building from source with cmake 
+git clone git@github.com:UM-ARM-Lab/h-signature.git
+cd h-signature
+mkdir build
+# The only dependency is Eigen3
+sudo apt install libeigen3-dev
+# Build and run tests
+cd build
+cmake ..
+make
+ctest
+```
+
+## API
+
+There is only one function!
+
+```python
+# Python with numpy
+from h_signature.h_signature_np import get_h_signature
+# Tau is an [Nx3] numpy array and skeleton is a dict of [3xN] numpy arrays
+h_sig = get_h_signature(tau, skeleton)
+print(h_sig)
+```
+
+```c++
+// C++ with Eigen
+#include <h_signature/h_signature.hpp>
+// The above header has these typedefs
+// typedef Eigen::Matrix3Xd Loop;
+// typedef std::map<std::string, Eigen::Matrix3Xd> Skeleton;
+
+// And this is the function, that's it! 
+HSignature get_h_signature(Loop const &loop, Skeleton const & skeleton);
+```
+
+## Citation
