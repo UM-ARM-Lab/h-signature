@@ -1,6 +1,6 @@
 # H-Signature
 
-A C++ or Python Library for computing the h-signature as defined in \[1\].
+A C++ or Python Library for computing the h-signature as defined by Bhattacharya, Likhachev, and Kumar in their [RSS Paper](https://www.roboticsproceedings.org/rss07/p02.pdf).
 
 What is the H-signature? In the simplest case, it tells you whether two closed 3D curves are linked, or unlinked. The figure below shows some examples.
 ![Four visual examples of the H-signature](docs/simple_h.png)
